@@ -23,7 +23,7 @@ public class UsuarioModel {
     private Long id;
     private String nome;
     @Column(unique = true)
-    private Integer cpf;
+    private String cpf;
     private Date dataNasc;
 
     @OneToMany(mappedBy = "usuario")
@@ -32,7 +32,7 @@ public class UsuarioModel {
     public UsuarioModel() {
     }
 
-    public UsuarioModel(List<CartaoModel> cartoes, Date dataNasc, Integer cpf, String nome) {
+    public UsuarioModel(List<CartaoModel> cartoes, Date dataNasc, String cpf, String nome) {
         this.cartoes = cartoes;
         this.dataNasc = dataNasc;
         this.cpf = cpf;
@@ -47,11 +47,11 @@ public class UsuarioModel {
         this.cartoes = cartoes;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
