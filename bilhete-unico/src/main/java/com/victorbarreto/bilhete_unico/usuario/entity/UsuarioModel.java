@@ -1,8 +1,10 @@
-package com.victorbarreto.bilhete_unico.entity;
+package com.victorbarreto.bilhete_unico.usuario.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

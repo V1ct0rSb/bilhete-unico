@@ -1,7 +1,9 @@
-package com.victorbarreto.bilhete_unico.entity;
+package com.victorbarreto.bilhete_unico.transacao.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

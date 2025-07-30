@@ -1,10 +1,12 @@
-package com.victorbarreto.bilhete_unico.entity;
+package com.victorbarreto.bilhete_unico.cartao.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.victorbarreto.bilhete_unico.transacao.entity.TransacaoModel;
+import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
