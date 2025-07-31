@@ -1,4 +1,4 @@
-package com.victorbarreto.bilhete_unico.usuario.excption;
+package com.victorbarreto.bilhete_unico.exception;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +17,28 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
-    @ExceptionHandler(UsuarioNãoCadastradoException.class)
-    public ResponseEntity<String> handleUsuarioNãoCadastradoException(UsuarioNãoCadastradoException ex) {
+    @ExceptionHandler(SaldoInsuficienteException.class)
+    public ResponseEntity<String> handleSaldoInsuficienteException(SaldoInsuficienteException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(UsuarioNaoCadastradoException.class)
+    public ResponseEntity<String> handleUsuarioNãoCadastradoException(UsuarioNaoCadastradoException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(CartaoNaoCadastradoException.class)
+    public ResponseEntity<String> handleCartaoNaoCadastradoException(CartaoNaoCadastradoException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(TipoTransacaoInvalidoException.class)
+    public ResponseEntity<String> handleTipoTransacaoInvalidoException(TipoTransacaoInvalidoException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(TipoCartaoInvalidoException.class)
+    public ResponseEntity<String> handleTipoCartaoInvalidoException(TipoCartaoInvalidoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 

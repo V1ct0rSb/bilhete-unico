@@ -9,3 +9,4 @@ public record CartaoCreateDTO(
         @NotNull(message = "O ID do usuário não pode ser nulo.") @Positive(message = "O ID do usuário deve ser um número positivo.") Long idUsuario,
         @NotNull(message = "O tipo do cartão não pode ser nulo.") TipoCartao tipo) {
 }
+

@@ -1,9 +1,9 @@
 package com.victorbarreto.bilhete_unico.transacao.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
 
 import jakarta.persistence.Entity;
@@ -27,6 +27,7 @@ public class TransacaoModel {
 
     @ManyToOne
     @JoinColumn(name = "cartao_id")
+    @JsonIgnore
     private CartaoModel cartao;
 
     public TransacaoModel() {

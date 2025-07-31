@@ -1,4 +1,4 @@
-package com.victorbarreto.bilhete_unico.usuario.excption;
+package com.victorbarreto.bilhete_unico.exception;
 
 public class UsuarioCadastradoException extends RuntimeException {
     public UsuarioCadastradoException(String mensagem) {

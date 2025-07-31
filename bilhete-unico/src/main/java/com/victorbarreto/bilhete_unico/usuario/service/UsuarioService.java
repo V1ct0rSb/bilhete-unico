@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.victorbarreto.bilhete_unico.usuario.dto.UsuarioCreateDTO;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
-import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioCadastradoException;
-import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioNãoCadastradoException;
+import com.victorbarreto.bilhete_unico.exception.UsuarioCadastradoException;
+import com.victorbarreto.bilhete_unico.exception.UsuarioNaoCadastradoException;
 import com.victorbarreto.bilhete_unico.usuario.repository.UsuarioRepository;
 
 @Service
@@ -33,13 +33,13 @@ public class UsuarioService {
     //GET
     public UsuarioModel buscarPorCpf(String cpf) {
         return usuarioRepository.findByCpf(cpf)
-                .orElseThrow(() -> new UsuarioNãoCadastradoException("Cpd informado não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoCadastradoException("Cpf informado não encontrado"));
     }
 
     //GET
     public UsuarioModel buscarPorId(Long id) {
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new UsuarioNãoCadastradoException("Id informado não encontrado"));
+                .orElseThrow(() -> new UsuarioNaoCadastradoException("Id informado não encontrado"));
     }
 
     //GET

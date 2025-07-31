@@ -10,8 +10,9 @@ import com.victorbarreto.bilhete_unico.cartao.dto.CartaoDadosDTO;
 import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
 import com.victorbarreto.bilhete_unico.cartao.entity.TipoCartao;
 import com.victorbarreto.bilhete_unico.cartao.repository.CartaoRepository;
+import com.victorbarreto.bilhete_unico.exception.CartaoNaoCadastradoException;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
-import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioNãoCadastradoException;
+import com.victorbarreto.bilhete_unico.exception.UsuarioNaoCadastradoException;
 import com.victorbarreto.bilhete_unico.usuario.repository.UsuarioRepository;
 
 @Service
@@ -26,7 +27,7 @@ public class CartaoService {
         CartaoModel cartaoModel = new CartaoModel();
 
         UsuarioModel usuarioEncontrado = usuarioRepository.findById(cartaoNovo.idUsuario())
-                .orElseThrow(() -> new UsuarioNãoCadastradoException("Id do usuário informado não encontrado!"));
+                .orElseThrow(() -> new UsuarioNaoCadastradoException("Id do usuário informado não encontrado!"));
 
         cartaoModel.setTipo(cartaoNovo.tipo());
 
@@ -56,7 +57,7 @@ public class CartaoService {
     //GET
     public CartaoDadosDTO exibirCartao(Integer numero) {
         CartaoModel cartaoModel = cartaoRepository.findByNumero(numero)
-                .orElseThrow(() -> new RuntimeException("Numero informado não cadastrado"));
+                .orElseThrow(() -> new CartaoNaoCadastradoException("Numero informado não cadastrado"));
 
         UsuarioModel usuario = cartaoModel.getUsuario();
         BigDecimal saldo = cartaoModel.getSaldo();
@@ -64,7 +65,6 @@ public class CartaoService {
         TipoCartao tipo = cartaoModel.getTipo();
 
         return new CartaoDadosDTO(saldo, status, tipo, usuario.getNome());
-
-
     }
+
 }

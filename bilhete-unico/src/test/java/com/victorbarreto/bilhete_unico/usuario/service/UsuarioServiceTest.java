@@ -16,7 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.victorbarreto.bilhete_unico.usuario.dto.UsuarioCreateDTO;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
-import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioCadastradoException;
+import com.victorbarreto.bilhete_unico.exception.UsuarioCadastradoException;
 import com.victorbarreto.bilhete_unico.usuario.repository.UsuarioRepository;
 
 @ExtendWith(MockitoExtension.class)
