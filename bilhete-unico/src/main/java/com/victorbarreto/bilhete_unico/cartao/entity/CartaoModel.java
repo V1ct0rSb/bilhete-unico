@@ -27,7 +27,7 @@ public class CartaoModel {
     @Column(unique = true)
     private Integer numero;
     private TipoCartao tipo;
-    private Boolean stutus;
+    private Boolean status;
     private BigDecimal saldo;
 
     @ManyToOne
@@ -40,13 +40,13 @@ public class CartaoModel {
 
     public CartaoModel(Integer numero,
                        BigDecimal saldo,
-                       Boolean stutus,
+                       Boolean status,
                        UsuarioModel usuario,
                        TipoCartao tipo,
                        List<TransacaoModel> transacoes) {
         this.numero = numero;
         this.saldo = saldo;
-        this.stutus = stutus;
+        this.status = status;
         this.usuario = usuario;
         this.tipo = tipo;
         this.transacoes = transacoes;
@@ -79,12 +79,12 @@ public class CartaoModel {
         this.saldo = saldo;
     }
 
-    public Boolean getStutus() {
-        return stutus;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setStutus(Boolean stutus) {
-        this.stutus = stutus;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public TipoCartao getTipo() {

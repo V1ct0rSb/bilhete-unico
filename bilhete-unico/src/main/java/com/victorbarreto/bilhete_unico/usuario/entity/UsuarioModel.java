@@ -1,5 +1,6 @@
 package com.victorbarreto.bilhete_unico.usuario.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ public class UsuarioModel {
     private String nome;
     @Column(unique = true)
     private String cpf;
-    private Date dataNasc;
+    private LocalDate dataNasc;
 
     @OneToMany(mappedBy = "usuario")
     private List<CartaoModel> cartoes = new ArrayList<>();
@@ -32,7 +33,7 @@ public class UsuarioModel {
     public UsuarioModel() {
     }
 
-    public UsuarioModel(List<CartaoModel> cartoes, Date dataNasc, String cpf, String nome) {
+    public UsuarioModel(List<CartaoModel> cartoes, LocalDate dataNasc, String cpf, String nome) {
         this.cartoes = cartoes;
         this.dataNasc = dataNasc;
         this.cpf = cpf;
@@ -55,11 +56,11 @@ public class UsuarioModel {
         this.cpf = cpf;
     }
 
-    public Date getDataNasc() {
+    public LocalDate getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Date dataNasc) {
+    public void setDataNasc(LocalDate dataNasc) {
         this.dataNasc = dataNasc;
     }
 

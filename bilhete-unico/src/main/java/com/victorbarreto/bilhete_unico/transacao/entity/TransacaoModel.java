@@ -2,6 +2,7 @@ package com.victorbarreto.bilhete_unico.transacao.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
 
@@ -22,7 +23,7 @@ public class TransacaoModel {
     private Long id;
     private BigDecimal valor;
     private TipoTransacao tipo;
-    private LocalDate dataHora;
+    private LocalDateTime dataHora;
 
     @ManyToOne
     @JoinColumn(name = "cartao_id")
@@ -31,7 +32,7 @@ public class TransacaoModel {
     public TransacaoModel() {
     }
 
-    public TransacaoModel(CartaoModel cartao, LocalDate dataHora, TipoTransacao tipo, BigDecimal valor) {
+    public TransacaoModel(CartaoModel cartao, LocalDateTime dataHora, TipoTransacao tipo, BigDecimal valor) {
         this.cartao = cartao;
         this.dataHora = dataHora;
         this.tipo = tipo;
@@ -46,11 +47,11 @@ public class TransacaoModel {
         this.cartao = cartao;
     }
 
-    public LocalDate getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(LocalDate dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 
