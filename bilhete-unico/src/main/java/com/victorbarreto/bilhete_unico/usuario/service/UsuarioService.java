@@ -23,8 +23,8 @@ public class UsuarioService {
             throw new UsuarioCadastradoException("Usuario já cadastrado no sistema!");
         }
 
-        usuarioModel.setCpf(usuarioNovo.cpf());
         usuarioModel.setNome(usuarioNovo.nome());
+        usuarioModel.setCpf(usuarioNovo.cpf());
         usuarioModel.setDataNasc(usuarioNovo.dataNasc());
 
         return usuarioRepository.save(usuarioModel);
