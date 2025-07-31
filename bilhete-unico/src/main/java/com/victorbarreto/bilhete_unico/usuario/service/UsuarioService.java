@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.victorbarreto.bilhete_unico.usuario.dto.UsuarioCreateDTO;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
 import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioCadastradoException;
+import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioNãoCadastradoException;
 import com.victorbarreto.bilhete_unico.usuario.repository.UsuarioRepository;
 
 @Service
@@ -15,7 +16,7 @@ public class UsuarioService {
     public UsuarioModel cadastrarUsuario(UsuarioCreateDTO usuarioNovo) {
         UsuarioModel usuarioModel = new UsuarioModel();
 
-        if(usuarioRepository.existsByCpf(usuarioNovo.cpf())){
+        if (usuarioRepository.existsByCpf(usuarioNovo.cpf())) {
             throw new UsuarioCadastradoException("Usuario já cadastrado no sistema!");
         }
 
@@ -24,6 +25,16 @@ public class UsuarioService {
         usuarioModel.setDataNasc(usuarioNovo.dataNasc());
 
         return usuarioRepository.save(usuarioModel);
+    }
+
+    public UsuarioModel buscarPorCpf(String cpf) {
+        return usuarioRepository.findByCpf(cpf)
+                .orElseThrow(() -> new UsuarioNãoCadastradoException("Cpd informado não encontrado"));
+    }
+
+    public UsuarioModel buscarPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new UsuarioNãoCadastradoException("Id informado não encontrado"));
     }
 
 

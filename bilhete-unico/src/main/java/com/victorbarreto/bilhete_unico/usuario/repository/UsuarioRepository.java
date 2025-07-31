@@ -10,4 +10,6 @@ import jakarta.validation.constraints.Positive;
 
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     boolean existsByCpf(String cpf);
+
+    Optional<UsuarioModel> findByCpf(String cpf);
 }
