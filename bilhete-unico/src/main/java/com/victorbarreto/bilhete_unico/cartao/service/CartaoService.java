@@ -6,7 +6,9 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.victorbarreto.bilhete_unico.cartao.dto.CartaoCreateDTO;
+import com.victorbarreto.bilhete_unico.cartao.dto.CartaoDadosDTO;
 import com.victorbarreto.bilhete_unico.cartao.entity.CartaoModel;
+import com.victorbarreto.bilhete_unico.cartao.entity.TipoCartao;
 import com.victorbarreto.bilhete_unico.cartao.repository.CartaoRepository;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
 import com.victorbarreto.bilhete_unico.usuario.excption.UsuarioNãoCadastradoException;
@@ -49,5 +51,20 @@ public class CartaoService {
             }
         } while (cartaoRepository.existsByNumero(numero));
         return numero;
+    }
+
+    //GET
+    public CartaoDadosDTO exibirCartao(Integer numero) {
+        CartaoModel cartaoModel = cartaoRepository.findByNumero(numero)
+                .orElseThrow(() -> new RuntimeException("Numero informado não cadastrado"));
+
+        UsuarioModel usuario = cartaoModel.getUsuario();
+        BigDecimal saldo = cartaoModel.getSaldo();
+        Boolean status = cartaoModel.getStatus();
+        TipoCartao tipo = cartaoModel.getTipo();
+
+        return new CartaoDadosDTO(saldo, status, tipo, usuario.getNome());
+
+
     }
 }
