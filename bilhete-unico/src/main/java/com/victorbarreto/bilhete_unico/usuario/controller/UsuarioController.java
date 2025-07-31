@@ -1,5 +1,7 @@
 package com.victorbarreto.bilhete_unico.usuario.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ public class UsuarioController {
 
     @GetMapping("/usuario/buscar")
     public ResponseEntity<?> buscarUsuario(@Valid @RequestParam(required = false) Long id,
-                                                @RequestParam(required = false) String cpf) {
+                                           @RequestParam(required = false) String cpf) {
         if (id != null) {
             return ResponseEntity.ok(usuarioService.buscarPorId(id));
         } else if (cpf != null) {
@@ -37,5 +39,11 @@ public class UsuarioController {
         } else {
             return ResponseEntity.badRequest().body("Informe um ID ou CPF para a busca.");
         }
+    }
+
+    @GetMapping("/usuario")
+    public ResponseEntity<List<UsuarioModel>> listarUsuarios() {
+        List<UsuarioModel> usuarioList = usuarioService.listarUsuarios();
+        return ResponseEntity.ok().body(usuarioList);
     }
 }

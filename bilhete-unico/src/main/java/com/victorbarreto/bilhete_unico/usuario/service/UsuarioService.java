@@ -1,5 +1,7 @@
 package com.victorbarreto.bilhete_unico.usuario.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.victorbarreto.bilhete_unico.usuario.dto.UsuarioCreateDTO;
@@ -13,6 +15,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    //POST
     public UsuarioModel cadastrarUsuario(UsuarioCreateDTO usuarioNovo) {
         UsuarioModel usuarioModel = new UsuarioModel();
 
@@ -27,14 +30,21 @@ public class UsuarioService {
         return usuarioRepository.save(usuarioModel);
     }
 
+    //GET
     public UsuarioModel buscarPorCpf(String cpf) {
         return usuarioRepository.findByCpf(cpf)
                 .orElseThrow(() -> new UsuarioNãoCadastradoException("Cpd informado não encontrado"));
     }
 
+    //GET
     public UsuarioModel buscarPorId(Long id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new UsuarioNãoCadastradoException("Id informado não encontrado"));
+    }
+
+    //GET
+    public List<UsuarioModel> listarUsuarios(){
+        return usuarioRepository.findAll();
     }
 
 
