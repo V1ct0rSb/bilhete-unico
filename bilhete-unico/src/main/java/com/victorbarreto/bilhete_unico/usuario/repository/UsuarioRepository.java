@@ -3,6 +3,7 @@ package com.victorbarreto.bilhete_unico.usuario.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import com.victorbarreto.bilhete_unico.usuario.entity.UsuarioModel;
 
 import jakarta.validation.constraints.NotNull;
@@ -12,4 +13,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     boolean existsByCpf(String cpf);
 
     Optional<UsuarioModel> findByCpf(String cpf);
+
+    Optional<UsuarioModel> findByNome(String nome);
 }
